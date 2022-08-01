@@ -20,12 +20,6 @@ workflow theiaeuk_illumina_pe {
     String seq_method = "ILLUMINA"
     File read1_raw
     File read2_raw
-    String? run_id
-    String? collection_date
-    String? originating_lab
-    String? city
-    String? county
-    String? zip
     Int min_reads = 7472
     Int min_basepairs = 2241820
     Int min_genome_size = 100000
