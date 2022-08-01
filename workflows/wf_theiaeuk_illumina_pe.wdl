@@ -6,7 +6,6 @@ import "../tasks/quality_control/task_quast.wdl" as quast
 import "../tasks/quality_control/task_cg_pipeline.wdl" as cg_pipeline
 import "../tasks/quality_control/task_screen.wdl" as screen
 import "../tasks/taxon_id/task_gambit.wdl" as gambit
-import "../tasks/gene_typing/task_amrfinderplus.wdl" as amrfinderplus
 import "../tasks/species_typing/task_ts_mlst.wdl" as ts_mlst
 import "../tasks/task_versioning.wdl" as versioning
 
@@ -84,12 +83,6 @@ workflow theiaeuk_illumina_pe {
         input:
           assembly = shovill_pe.assembly_fasta,
           samplename = samplename
-      }
-      call amrfinderplus.amrfinderplus_nuc as amrfinderplus_task {
-        input:
-          assembly = shovill_pe.assembly_fasta,
-          samplename = samplename,
-          organism = gambit.gambit_predicted_taxon
       }
       call ts_mlst.ts_mlst {
         input: 
