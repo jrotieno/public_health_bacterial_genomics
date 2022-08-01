@@ -22,10 +22,10 @@ task shovill_pe {
 
     
     Int? depth
-    String? genome_size
+    String genome_size = 12.5M
     Int min_contig_length = 200
     Float? min_coverage
-    String assembler = "spades"
+    String assembler = "skesa"
     String? assembler_options
     String? kmers
     Boolean trim = false

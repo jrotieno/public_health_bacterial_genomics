@@ -65,3 +65,8 @@ workflows:
    primaryDescriptorPath: /workflows/wf_rasusa.wdl
    testParameterFiles:
     - empty.json
+ - name: TheiaEuk_Illumina_PE
+   subclass: WDL
+   primaryDescriptorPath: /workflows/wf_theiaeuk_illumina_pe.wdl
+   testParameterFiles:
+    - empty.json

@@ -7,7 +7,7 @@ task cg_pipeline {
     String samplename
     String docker="quay.io/staphb/lyveset:1.1.4f"
     String cg_pipe_opts="--fast"
-    Int genome_length
+    Int genome_length = 12500000
   }
   command <<<
     # date and version control
