@@ -70,3 +70,8 @@ workflows:
    primaryDescriptorPath: /workflows/wf_theiaeuk_illumina_pe.wdl
    testParameterFiles:
     - empty.json
+ - name: TheiaCauris_Tree
+   subclass: WDL
+   primaryDescriptorPath: /workflows/wf_theiacauris.wdl
+   testParameterFiles:
+    - empty.json
