@@ -70,8 +70,8 @@ workflows:
    primaryDescriptorPath: /workflows/wf_theiaeuk_illumina_pe.wdl
    testParameterFiles:
     - empty.json
- - name: TheiaCauris_Tree
+ - name: TheiaCauris_SNP
    subclass: WDL
-   primaryDescriptorPath: /workflows/wf_theiacauris.wdl
+   primaryDescriptorPath: /workflows/wf_theiacauris_snp.wdl
    testParameterFiles:
     - empty.json
