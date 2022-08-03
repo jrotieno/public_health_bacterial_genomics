@@ -30,11 +30,11 @@ task ksnp3 {
   fi
 
   # add refs to ksnp3_input.tsv
-  echo -e "${ref_clade1}\tClade1" >> ksnp3_input.tsv
-  echo -e "${ref_clade2}\tClade2" >> ksnp3_input.tsv
-  echo -e "${ref_clade3}\tClade3" >> ksnp3_input.tsv
-  echo -e "${ref_clade4}\tClade4" >> ksnp3_input.tsv
-  echo -e "${ref_clade5}\tClade5" >> ksnp3_input.tsv
+  echo -e "~{ref_clade1}\tClade1" >> ksnp3_input.tsv
+  echo -e "~{ref_clade2}\tClade2" >> ksnp3_input.tsv
+  echo -e "~{ref_clade3}\tClade3" >> ksnp3_input.tsv
+  echo -e "~{ref_clade4}\tClade4" >> ksnp3_input.tsv
+  echo -e "~{ref_clade5}\tClade5" >> ksnp3_input.tsv
 
   # create file of filenames for kSNP3 input
   touch ksnp3_input.tsv
