@@ -65,7 +65,7 @@ workflows:
    primaryDescriptorPath: /workflows/wf_rasusa.wdl
    testParameterFiles:
     - empty.json
- - name: TheiaCauris_Tree
+ - name: TheiaCauris_MashTree
    subclass: WDL
    primaryDescriptorPath: /workflows/wf_theiacauris_tree.wdl
    testParameterFiles:
