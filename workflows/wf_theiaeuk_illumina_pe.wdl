@@ -136,16 +136,6 @@ workflow theiaeuk_illumina_pe {
     String? gambit_version = gambit.gambit_version
     String? gambit_db_version = gambit.gambit_db_version
     String? gambit_docker = gambit.gambit_docker
-    # NCBI-AMRFinderPlus Outputs
-    File? amrfinderplus_all_report = amrfinderplus_task.amrfinderplus_all_report
-    File? amrfinderplus_amr_report = amrfinderplus_task.amrfinderplus_amr_report
-    File? amrfinderplus_stress_report = amrfinderplus_task.amrfinderplus_stress_report
-    File? amrfinderplus_virulence_report = amrfinderplus_task.amrfinderplus_virulence_report
-    String? amrfinderplus_amr_genes = amrfinderplus_task.amrfinderplus_amr_genes
-    String? amrfinderplus_stress_genes = amrfinderplus_task.amrfinderplus_stress_genes
-    String? amrfinderplus_virulence_genes = amrfinderplus_task.amrfinderplus_virulence_genes
-    String? amrfinderplus_version = amrfinderplus_task.amrfinderplus_version
-    String? amrfinderplus_db_version = amrfinderplus_task.amrfinderplus_db_version
     # MLST Typing
     File? ts_mlst_results = ts_mlst.ts_mlst_results
     String? ts_mlst_predicted_st = ts_mlst.ts_mlst_predicted_st
