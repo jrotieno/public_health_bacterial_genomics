@@ -1,6 +1,6 @@
 version 1.0
 
-import "../tasks/task_theiacauris.wdl" as ksnp3
+import "../tasks/task_theiacauris_snp.wdl" as ksnp3
 import "../tasks/phylogenetic_inference/task_snp_dists.wdl" as snp_dists
 import "../tasks/task_versioning.wdl" as versioning
 
@@ -25,12 +25,12 @@ workflow theiacauris {
     input:
   }
   output {
-    String theiacauris_wf_version = version_capture.phbg_version
-    String theiacauris_wf_analysis_date = version_capture.date
+    String theiacauris_snp_wf_version = version_capture.phbg_version
+    String theiacauris_snp_wf_analysis_date = version_capture.date
 
     File theiacauris_snp_matrix = snp_dists.snp_matrix
-    File theiacauris_tree = ksnp3_task.ksnp3_tree
-    File theiacauris_vcf = ksnp3_task.ksnp3_vcf
-    String theiacauris_docker = ksnp3_task.ksnp3_docker_image
+    File theiacauris_snp_tree = ksnp3_task.ksnp3_tree
+    File theiacauris_snp_vcf = ksnp3_task.ksnp3_vcf
+    String theiacauris_snp_docker = ksnp3_task.ksnp3_docker_image
   }
 }
