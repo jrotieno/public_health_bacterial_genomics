@@ -1,6 +1,6 @@
 version 1.0
 
-task mycosnp {
+task mycosnp_varaints {
   input {
     File read1
     File read2
@@ -85,6 +85,7 @@ task mycosnp {
     Int consensus_n_variant_min_depth = min_depth
     File vcf = "~{samplename}/results/samples/~{samplename}/variant_calling/haplotypecaller/~{samplename}.g.vcf.gz"
     File vcf_index = "~{samplename}/results/samples/~{samplename}/variant_calling/haplotypecaller/~{samplename}.g.vcf.gz.tbi"
+    File qc_report = "~{samplename}/results/samples/~{samplename}/qc_report/~{samplename}_output.txt"
     File multiqc = "~{samplename}/results/multiqc/multiqc_report.html"
     File full_results = "~{samplename}.tar.gz"
   }
