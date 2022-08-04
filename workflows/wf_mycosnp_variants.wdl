@@ -50,6 +50,7 @@ workflow mycosnp_consensus_assembly {
     File vcf = mycosnp_varaints.vcf
     File vcf_index = mycosnp_varaints.vcf_index
     File multiqc = mycosnp_varaints.multiqc
+    File qc_report = mycosnp_varaints.qc_report
     File full_results = mycosnp_varaints.full_results
   }
 }
