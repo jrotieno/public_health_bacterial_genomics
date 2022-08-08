@@ -17,6 +17,7 @@ task theiacauris_mashtree_fasta {
     File ref_clade3 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_III_reference.fasta"
     File ref_clade4 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_IV_reference.fasta"
     File ref_clade5 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_V_reference.fasta"
+    File? ref_other
   }
   command <<<
     # date and version control
@@ -25,6 +26,9 @@ task theiacauris_mashtree_fasta {
     
     # organize input assemblies
     mkdir mash_assemblies
+    if [[ ! -z ~{ref_other} ]]; then
+      mv ~{ref_other} mash_assemblies
+    fi
     mv ~{ref_clade1} mash_assemblies
     mv ~{ref_clade2} mash_assemblies
     mv ~{ref_clade3} mash_assemblies

@@ -7,11 +7,13 @@ workflow theiacauris_tree {
     input {
     Array[File] assembly_fasta
     String cluster_name
+    File ref_other
     }
-    call mashtree.mashtree_fasta as mashtree_task {
+    call mashtree.theiacauris_mashtree_fasta as mashtree_task {
         input:
         assembly_fasta = assembly_fasta,
-        cluster_name = cluster_name
+        cluster_name = cluster_name,
+        ref_other = ref_other
     }
     call versioning.version_capture{
     input:
