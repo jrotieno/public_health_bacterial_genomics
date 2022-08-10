@@ -7,7 +7,6 @@ workflow theiacauris_tree {
     input {
     File assembly_fasta
     String cluster_name = "CladeTyper_Tree"
-    File ref_other
     }
     call mashtree.theiacauris_mashtree_fasta as mashtree_task {
         input:
