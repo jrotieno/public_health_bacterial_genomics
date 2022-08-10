@@ -10,8 +10,8 @@ task theiacauris_mashtree_fasta {
     Int mindepth = 5
     Int kmerlength = 21
     Int sketchsize = 10000
-    Int cpu = 16
-    Int memory = 64
+    Int cpu = 8
+    Int memory = 32
     File ref_clade1 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_I_reference.fasta"
     File ref_clade2 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_II_reference.fasta"
     File ref_clade3 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_III_reference.fasta"
