@@ -15,7 +15,7 @@ workflow theiacauris_tree {
         cluster_name = cluster_name,
         ref_other = ref_other
     }
-    call versioning.version_capture{
+    call versioning.version_capture {
     input:
   }
   output {
