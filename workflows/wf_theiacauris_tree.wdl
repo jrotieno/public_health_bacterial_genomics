@@ -5,8 +5,8 @@ import "../tasks/task_versioning.wdl" as versioning
 
 workflow theiacauris_tree {
     input {
-    Array[File] assembly_fasta
-    String cluster_name
+    File assembly_fasta
+    String cluster_name = "CladeTyper_Tree"
     File ref_other
     }
     call mashtree.theiacauris_mashtree_fasta as mashtree_task {
