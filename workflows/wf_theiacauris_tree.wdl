@@ -12,8 +12,7 @@ workflow theiacauris_tree {
     call mashtree.theiacauris_mashtree_fasta as mashtree_task {
         input:
         assembly_fasta = assembly_fasta,
-        cluster_name = cluster_name,
-        ref_other = ref_other
+        cluster_name = cluster_name
     }
     call versioning.version_capture {
     input:
