@@ -2,7 +2,7 @@ version 1.0
 
 task theiacauris_mashtree_fasta {
   input {
-    Array[File] assembly_fasta
+    File assembly_fasta
     String cluster_name
     Int truncLength = 250
     String sort_order = "ABC"
@@ -47,6 +47,8 @@ task theiacauris_mashtree_fasta {
       ~{'--outmatrix ' + cluster_name + '.tsv'} \
       ~{'--outtree ' + cluster_name + '.nwk'} \
       mash_assemblies/*
+      
+      
       
   >>>
   output {
