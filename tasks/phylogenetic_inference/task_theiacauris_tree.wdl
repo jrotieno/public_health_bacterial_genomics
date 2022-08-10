@@ -17,7 +17,7 @@ task theiacauris_mashtree_fasta {
     File ref_clade3 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_III_reference.fasta"
     File ref_clade4 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_IV_reference.fasta"
     File ref_clade5 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_V_reference.fasta"
-    File? ref_other
+    File? ref_other = "gs://theiagen-public-files/terra/candida_auris_refs/candida_auris_B11221_PGLS01000001.1.fasta"
   }
   command <<<
     # date and version control
@@ -34,7 +34,7 @@ task theiacauris_mashtree_fasta {
     mv ~{ref_clade3} mash_assemblies
     mv ~{ref_clade4} mash_assemblies
     mv ~{ref_clade5} mash_assemblies
-    mv ~{sep=' ' assembly_fasta} mash_assemblies
+    mv ~{assembly_fasta} mash_assemblies
     #run mashtree
     mashtree \
       ~{'--truncLength ' + truncLength} \
