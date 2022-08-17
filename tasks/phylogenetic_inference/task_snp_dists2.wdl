@@ -22,7 +22,7 @@ task snp_dists {
     python <<CODE
     # This script is based on Logan Fink's https://github.com/StaPH-B/CDPHE/blob/master/ordered_pairwise_matrix_generator_1.0.py
     # which takes in an ordered file and then returns a pairwise matrix based on that order.
-    import sys, os
+    import sys, os, csv, codecs
     cwd = os.getcwd()
 
     #Create a pairwise dictionary with all values possible, and create a list of the isolates
@@ -94,11 +94,27 @@ task snp_dists {
     z.close()
     print "Matrix has been created in current directory as '~{cluster_name}_snp_distance_matrix.tsv.'"
 
+    with codecs.open("~{cluster_name}_snp_distance_matrix.tsv",'r') as tsv_file:
+        tsv_reader=csv.reader(tsv_file, delimiter="\t")
+        tsv_data=list(tsv_reader)
+
+        if len(tsv_data)==1:
+          tsv_data.append(['NA']*len(tsv_data[0]))
+        tsv_dict=dict(zip(tsv_data[0], tsv_data[1]))
+
+        with codecs.open ("TOP_MATCH", 'wt') as Top_Match:
+          top_match=tsv_dict[1][0]
+          if top_match=='':
+            top_match='NA'
+          else:
+            top_match=top_match
+          Top_Match.write(top_match)
     CODE
   >>>
   output {
     String date = read_string("DATE")
     String version = read_string("VERSION")
+    String top_match_clade = read_string("TOP_MATCH")
     File snp_matrix = "${cluster_name}_snp_distance_matrix.tsv"
     File snp_dists_molten_ordered = "snp-dists-molten-ordered.tsv"
   }
