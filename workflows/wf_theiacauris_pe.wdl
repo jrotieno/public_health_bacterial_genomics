@@ -10,7 +10,7 @@ workflow theiacauris_pe {
     String samplename
     String cluster_name
   }
-  call ksnp3.ksnp3 as ksnp3_task {
+  call ksnp3.theiacauris_cladetyper as ksnp3_task {
     input:
       assembly_fasta = assembly_fasta,
       samplename = samplename,
@@ -27,7 +27,6 @@ workflow theiacauris_pe {
   output {
     String theiacauris_pe_wf_version = version_capture.phbg_version
     String theiacauris_pe_wf_analysis_date = version_capture.date
-
     File theiacauris_pe_snp_matrix = snp_dists.snp_matrix
     File theiacauris_top_match = snp_dists.top_match_clade
     File theiacauris_pe_tree = ksnp3_task.ksnp3_tree
