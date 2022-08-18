@@ -8,7 +8,6 @@ workflow theiacauris_pe {
   input {
     File assembly_fasta
     String samplename
-    String cluster_name
   }
   call ksnp3.theiacauris_cladetyper as cladetyper_task {
     input:
