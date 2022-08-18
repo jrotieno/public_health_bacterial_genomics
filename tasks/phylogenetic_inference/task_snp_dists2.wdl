@@ -73,7 +73,7 @@ task snp_dists {
     #        newOrderedList.append(item)
 
     #Open the output file and write the first line
-    z=open("~{cluster_name}_snp_distance_matrix.tsv", 'w')
+    z=open("~{samplename}_snp_distance_matrix.tsv", 'w')
     z.write(".")
     for item in orderedList:
         z.write('\t')
@@ -92,9 +92,9 @@ task snp_dists {
                 z.write(str(pairwiseDict[item1, item2]))
         z.write('\n')
     z.close()
-    print "Matrix has been created in current directory as '~{cluster_name}_snp_distance_matrix.tsv.'"
+    print "Matrix has been created in current directory as '~{samplename}_snp_distance_matrix.tsv.'"
 
-    with codecs.open("~{cluster_name}_snp_distance_matrix.tsv",'r') as tsv_file:
+    with codecs.open("~{samplename}_snp_distance_matrix.tsv",'r') as tsv_file:
         tsv_reader=csv.reader(tsv_file, delimiter="\t")
         tsv_data=list(tsv_reader)
 
@@ -115,7 +115,7 @@ task snp_dists {
     String date = read_string("DATE")
     String version = read_string("VERSION")
     String top_match_clade = read_string("TOP_MATCH")
-    File snp_matrix = "${cluster_name}_snp_distance_matrix.tsv"
+    File snp_matrix = "${samplename}_snp_distance_matrix.tsv"
     File snp_dists_molten_ordered = "snp-dists-molten-ordered.tsv"
   }
   runtime {
