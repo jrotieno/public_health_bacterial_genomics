@@ -16,7 +16,7 @@ workflow theiacauris_pe {
   }
   call snp_dists.snp_dists {
     input:
-      cluster_name = samplename,
+      samplename = samplename,
       alignment = cladetyper_task.cladetyper_matrix
   }
   call versioning.version_capture{

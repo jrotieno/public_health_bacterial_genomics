@@ -3,7 +3,7 @@ version 1.0
 task snp_dists {
   input {
     File alignment
-    String cluster_name
+    String samplename
   }
   command <<<
     # date and version control
