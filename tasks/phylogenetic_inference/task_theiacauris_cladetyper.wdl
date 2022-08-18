@@ -39,8 +39,6 @@ task theiacauris_cladetyper {
     # rename ksnp3 outputs with cluster name 
     mv ksnp3/core_SNPs_matrix.fasta ~{samplename}_SNPs_matrix.fasta
     mv ksnp3/tree.core.tre ~{samplename}.tree
-        
-      #Find and return min value col header of ~{cluster_name}.tsv
       
   >>>
   output {
