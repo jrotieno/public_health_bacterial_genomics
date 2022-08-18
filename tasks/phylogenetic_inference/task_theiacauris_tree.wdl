@@ -48,7 +48,7 @@ task theiacauris_mashtree_fasta {
       ~{'--outtree ' + cluster_name + '.nwk'} \
       mash_assemblies/*
       
-      #Find and return min value col header of ~{cluster_name}.tsv
+      #Find and return min value col head of ~{cluster_name}.tsv
       
   >>>
   output {
@@ -58,7 +58,7 @@ task theiacauris_mashtree_fasta {
     File mashtree_tree = "~{cluster_name}.nwk"
   }
   runtime {
-    docker: "quay.io/staphb/ksnp3:3.1"
+    docker: "quay.io/staphb/mashtree:1.2.0"
     memory: "~{memory} GB"
     cpu: cpu
     disks: "local-disk 100 SSD"

@@ -46,7 +46,7 @@ task theiacauris_cladetyper {
     String ksnp3_docker_image = docker_image
   }
   runtime {
-    docker: "quay.io/staphb/mashtree:1.2.0"
+    docker: docker_image
     memory: "~{memory} GB"
     cpu: cpu
     disks: "local-disk 100 SSD"
