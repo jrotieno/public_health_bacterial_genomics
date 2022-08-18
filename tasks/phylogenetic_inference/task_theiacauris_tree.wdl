@@ -48,7 +48,7 @@ task theiacauris_mashtree_fasta {
       ~{'--outtree ' + cluster_name + '.nwk'} \
       mash_assemblies/*
       
-      #Find and return min value col head of ~{cluster_name}.tsv
+      #Find and return min value col header of the min dist 
       
   >>>
   output {
