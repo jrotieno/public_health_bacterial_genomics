@@ -13,13 +13,12 @@ workflow theiacauris_pe {
   call ksnp3.theiacauris_cladetyper as cladetyper_task {
     input:
       assembly_fasta = assembly_fasta,
-      samplename = samplename,
-      cluster_name = cluster_name
+      samplename = samplename
   }
   call snp_dists.snp_dists {
     input:
-      cluster_name = cluster_name,
-      alignment = ksnp3_task.ksnp3_matrix
+      cluster_name = samplename,
+      alignment = cladetyper_task.cladetyper_matrix
   }
   call versioning.version_capture{
     input:
