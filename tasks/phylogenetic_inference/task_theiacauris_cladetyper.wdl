@@ -29,21 +29,19 @@ task theiacauris_cladetyper {
     echo -e "~{assembly_fasta}\t~{samplename}">> ksnp3_input.tsv
 
 
-    kSNP3 -in ksnp3_input.tsv -outdir ksnp3 -k ~{kmer_size} -core -vcf
+    kSNP3 -in ksnp3_input.tsv -outdir ksnp3 -k ~{kmer_size}
     
     # rename ksnp3 outputs with cluster name 
-    mv ksnp3/core_SNPs_matrix.fasta ~{cluster_name}_core_SNPs_matrix.fasta
-    mv ksnp3/tree.core.tre ~{cluster_name}_core.tree
-    mv ksnp3/VCF.*.vcf ~{cluster_name}_core.vcf
+    mv ksnp3/core_SNPs_matrix.fasta ~{cluster_name}_SNPs_matrix.fasta
+    mv ksnp3/tree.core.tre ~{cluster_name}.tree
         
       #Find and return min value col header of ~{cluster_name}.tsv
       
   >>>
   output {
-    File ksnp3_matrix = "${cluster_name}_core_SNPs_matrix.fasta"
-    File ksnp3_tree = "${cluster_name}_core.tree"
-    File ksnp3_vcf = "${cluster_name}_core.vcf"
-    String ksnp3_docker_image = docker_image
+    File cladetyper_matrix = "${cluster_name}_SNPs_matrix.fasta"
+    File cladetyper_tree = "${cluster_name}.tree"
+    String cladetyper_docker_image = docker_image
   }
   runtime {
     docker: docker_image
