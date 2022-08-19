@@ -1,3 +1,0 @@
-Task,Input Variable ,Data Type ,Description
-tbprofiler_wf,readsFile,Sequencing read file in FASTQ file format
-tbprofiler_wf,samplename,String,Name of the sample being analyzed

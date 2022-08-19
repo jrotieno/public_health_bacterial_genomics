@@ -1,4 +1,0 @@
-Task,Input Variable ,Data Type ,Description
-tbprofiler_wf,read1,File,Forward Illumina read in FASTQ file format
-tbprofiler_wf,read2,File,Reverse Illumina read in FASTQ file format
-tbprofiler_wf,samplename,String,Name of the sample being analyzed

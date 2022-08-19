@@ -1,9 +1,0 @@
-Task,Variable Name,Data Type,Description,Default
-tbprofiler_one_sample_ont,tbprofiler_docker_image,String,Docker image used for running TBProfiler,quay.io/biocontainers/tb-profiler:3.0.8--pypyh5e36f6f_0
-tbprofiler_wf,caller,String,Variant calling tool used by TBProfiler,"bcftools"
-tbprofiler_wf_cov_frac_threshold,Int,Cutoff used to calculate fraction of region covered by <= this value,1
-tbprofiler_wf,mapper,String,Read alignment tool used by TBProfiler,"minimap2"
-tbprofiler_wf,min_af,Float,Minimum allele frequency to call variants,0.1
-tbprofiler_wf,min_af_pred,Float,Minimum allele frequency to use variants for prediction,0.1
-tbprofiler_wf,min_depth,Int,Minimum depth required to call variant,20
-version_capture,timezone,String,User time zone in valid Unix TZ string (e.g. America/New_York),None
