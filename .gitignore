@@ -1,0 +1,11 @@
+docs/source/additional_workflows.rst
+docs/source/tables/tbprofiler_ont_optional_inputs.tsv
+docs/source/tables/tbprofiler_ont_outputs.tsv
+docs/source/tables/tbprofiler_ont_required_inputs.tsv
+docs/source/tables/tbprofiler_pe_optional_inputs.tsv
+docs/source/tables/tbprofiler_pe_output.tsv
+docs/source/tables/tbprofiler_pe_required_inputs.tsv
+docs/source/tables/theiaprok_illumina_pe_optional_inputs.tsv
+docs/source/tables/theiaprok_illumina_pe_outputs.tsv
+docs/source/tables/theiaprok_illumina_pe_required_inputs.tsv
+docs/source/tables/theiaprok_illumina_se_required_inputs.tsv
