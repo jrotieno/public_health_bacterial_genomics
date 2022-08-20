@@ -19,9 +19,6 @@ workflow theiacauris_pe {
       samplename = samplename,
       alignment = cladetyper_task.cladetyper_matrix
   }
-  call versioning.version_capture{
-    input:
-  }
   output {
     String theiacauris_pe_wf_version = version_capture.phbg_version
     String theiacauris_pe_wf_analysis_date = version_capture.date
