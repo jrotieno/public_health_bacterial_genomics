@@ -23,7 +23,10 @@ task theiacauris_cladetyper {
     String ref_other_name = "ref_other"
   }
   command <<<
-    
+    # date and version control
+    date | tee DATE
+    kSNP3 -v | tee VERSION
+
     touch ksnp3_input.tsv
     echo -e "~{ref_clade1}\t~{ref_clade1_name}" >> ksnp3_input.tsv
     echo -e "~{ref_clade2}\t~{ref_clade2_name}" >> ksnp3_input.tsv
@@ -33,15 +36,17 @@ task theiacauris_cladetyper {
     echo -e "~{ref_other}\t~{ref_other_name}" >> ksnp3_input.tsv
     echo -e "~{assembly_fasta}\t~{samplename}">> ksnp3_input.tsv
     cat ksnp3_input.tsv
-
-    kSNP3 -in ksnp3_input.tsv -outdir ksnp3 -k ~{kmer_size}
     
+    kSNP3 -in ksnp3_input.tsv -outdir ksnp3 -k ~{kmer_size}
+
     # rename ksnp3 outputs with cluster name 
     mv ksnp3/core_SNPs_matrix.fasta ~{samplename}_SNPs_matrix.fasta
     mv ksnp3/tree.core.tre ~{samplename}.tree
       
   >>>
   output {
+    String date = read_string("DATE")
+    String version = read_string("VERSION")
     File cladetyper_matrix = "${samplename}_SNPs_matrix.fasta"
     File cladetyper_tree = "${samplename}.tree"
     String cladetyper_docker_image = docker_image
