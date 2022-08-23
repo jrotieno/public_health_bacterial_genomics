@@ -14,19 +14,12 @@ workflow theiacauris_pe {
       assembly_fasta = assembly_fasta,
       samplename = samplename
   }
-  call snp_dists.snp_dists {
-    input:
-      samplename = samplename,
-      alignment = cladetyper_task.cladetyper_matrix
-  }
   call versioning.version_capture{
     input:
   }
   output {
     String theiacauris_pe_wf_version = version_capture.phbg_version
     String theiacauris_pe_wf_analysis_date = version_capture.date
-    File theiacauris_pe_snp_matrix = snp_dists.snp_matrix
-    File theiacauris_top_match = snp_dists.top_match_clade
     File theiacauris_pe_tree = cladetyper_task.cladetyper_tree
     String theiacauris_pe_docker = cladetyper_task.cladetyper_docker_image
   }
