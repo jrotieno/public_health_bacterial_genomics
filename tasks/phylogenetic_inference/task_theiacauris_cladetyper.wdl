@@ -19,8 +19,6 @@ task theiacauris_cladetyper {
     String ref_clade4_name = "ref_clade4"
     File ref_clade5 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_V_reference.fasta"
     String ref_clade5_name = "ref_clade5"
-    File ref_other = "gs://theiagen-public-files/terra/candida_auris_refs/candida_auris_B11221_PGLS01000001.1.fasta"
-    String ref_other_name = "ref_other"
   }
   command <<<
     # date and version control
@@ -33,11 +31,10 @@ task theiacauris_cladetyper {
     echo -e "~{ref_clade3}\t~{ref_clade3_name}" >> ksnp3_input.tsv
     echo -e "~{ref_clade4}\t~{ref_clade4_name}" >> ksnp3_input.tsv
     echo -e "~{ref_clade5}\t~{ref_clade5_name}" >> ksnp3_input.tsv
-    echo -e "~{ref_other}\t~{ref_other_name}" >> ksnp3_input.tsv
-    echo -e "~{assembly_fasta}\t~{samplename}">> ksnp3_input.tsv
+    echo -e "~{assembly_fasta}\t~{samplename}" >> ksnp3_input.tsv
     cat ksnp3_input.tsv
     
-    kSNP3 -in ksnp3_input.tsv -outdir ksnp3 -k ~{kmer_size}
+    kSNP3 -in ksnp3_input.tsv -outdir ksnp3 -k ~{kmer_size} -core -vcf
 
     # rename ksnp3 outputs with cluster name 
     mv ksnp3/core_SNPs_matrix.fasta ~{samplename}_SNPs_matrix.fasta
