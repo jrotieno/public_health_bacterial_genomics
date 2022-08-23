@@ -20,6 +20,7 @@ workflow theiacauris_pe {
   output {
     String theiacauris_pe_wf_version = version_capture.phbg_version
     String theiacauris_pe_wf_analysis_date = version_capture.date
+    File thieiacauris_cladetyper_matrix = cladetyper_task.cladetyper_matrix
     File theiacauris_pe_tree = cladetyper_task.cladetyper_tree
     String theiacauris_pe_docker = cladetyper_task.cladetyper_docker_image
   }
