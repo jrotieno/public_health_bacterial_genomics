@@ -39,6 +39,9 @@ task theiacauris_cladetyper {
     # rename ksnp3 outputs with cluster name 
     mv ksnp3/core_SNPs_matrix.fasta ~{samplename}_SNPs_matrix.fasta
     mv ksnp3/tree.core.tre ~{samplename}.tree
+
+
+    
       
   >>>
   output {
