@@ -6,8 +6,8 @@ task theiacauris_cladetyper {
     String samplename
     Int kmer_size = 19
     String docker_image = "quay.io/staphb/ksnp3:3.1"
-    Int memory = 8
-    Int cpu = 4
+    Int memory = 16
+    Int cpu = 8
     Int disk_size = 100
     File ref_clade1 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_I_reference.fasta"
     String ref_clade1_name = "ref_clade1"
