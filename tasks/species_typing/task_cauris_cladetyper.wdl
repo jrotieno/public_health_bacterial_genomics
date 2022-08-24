@@ -28,7 +28,7 @@ task cauris_cladetyper {
     gambit signatures create -o my-signatures.h5 -k 11 -p ATGAC ~{ref_clade1} ~{ref_clade2} ~{ref_clade3} ~{ref_clade4} ~{ref_clade5} ~{assembly_fasta}
     gambit dist --qs my-signatures.h5 --square -o ~{samplename}_matrix.csv
     
-    cat ~{samplename}_matrix3.csv | sort -k 2n | head -3 | tail -1 | tee CLADETYPE
+    cat ~{samplename}_matrix.csv | sort -k7 -t ',' | head -3 | tail -1 | cut -d '/' -f7 | cut -d ',' -f1 | tee CLADETYPE
       
   >>>
   output {
