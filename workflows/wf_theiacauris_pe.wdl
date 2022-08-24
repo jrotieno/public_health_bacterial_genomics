@@ -1,6 +1,6 @@
 version 1.0
 
-import "../tasks/phylogenetic_inference/task_theiacauris_cladetyper.wdl" as ksnp3
+import"../tasks/species_typing/task_cauris_cladetyper.wdl" as gambit_cladetyper
 import "../tasks/task_versioning.wdl" as versioning
 
 workflow theiacauris_pe {
@@ -8,7 +8,7 @@ workflow theiacauris_pe {
     File assembly_fasta
     String samplename
   }
-  call ksnp3.theiacauris_cladetyper as cladetyper_task {
+  call gambit_cladetyper.cauris_cladetyper as gambit_cladetyper_task {
     input:
       assembly_fasta = assembly_fasta,
       samplename = samplename
@@ -19,9 +19,7 @@ workflow theiacauris_pe {
   output {
     String theiacauris_pe_wf_version = version_capture.phbg_version
     String theiacauris_pe_wf_analysis_date = version_capture.date
-    String theiacauris_pe_cladetype = cladetyper_task.cladetype
-    File theiacauris_cladetyper_matrix = cladetyper_task.cladetyper_matrix
-    File theiacauris_pe_tree = cladetyper_task.cladetyper_tree
-    String theiacauris_pe_docker = cladetyper_task.cladetyper_docker_image
+    String theiacauris_pe_clade_assignment = gambit_cladetyper_task.gambit_cladetype
+    String theiacauris_pe_docker = gambit_cladetyper_task.gambit_cladetyper_docker_image
   }
 }

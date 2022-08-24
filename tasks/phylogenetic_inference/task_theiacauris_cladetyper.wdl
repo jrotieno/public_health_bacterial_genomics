@@ -37,19 +37,18 @@ task theiacauris_cladetyper {
     kSNP3 -in ksnp3_input.tsv -outdir ksnp3 -k ~{kmer_size} -core -vcf
 
     # rename ksnp3 outputs with cluster name 
-    mv ksnp3/core_SNPs_matrix.fasta ~{samplename}_SNPs_matrix.fasta
-    mv ksnp3/tree.core.tre ~{samplename}.tree
-
-
-    cat ~{samplename}_SNPs_matrix.fasta | sort -k 2n input.tsv | head -1 | tee CLADETYPE
+    mv ksnp3/core_SNPs_matrix.fasta ~{samplename}_core_SNPs_matrix.fasta
+    mv ksnp3/tree.core.tre ~{samplename}_core.tree
+    
+    cat ~{samplename}_core_SNPs_matrix.fasta | sort -k 2n | head -1 | tee CLADETYPE
       
   >>>
   output {
     String cladetype = read_string("CLADETYPE")
     String date = read_string("DATE")
     String version = read_string("VERSION")
-    File cladetyper_matrix = "${samplename}_SNPs_matrix.fasta"
-    File cladetyper_tree = "${samplename}.tree"
+    File cladetyper_matrix = "{samplename}_core_SNPs_matrix.fasta"
+    File cladetyper_tree = "${samplename}_core.tree"
     String cladetyper_docker_image = docker_image
   }
   runtime {
