@@ -1,7 +1,6 @@
 version 1.0
 
 import "../tasks/phylogenetic_inference/task_theiacauris_cladetyper.wdl" as ksnp3
-import "../tasks/phylogenetic_inference/task_snp_dists2.wdl" as snp_dists
 import "../tasks/task_versioning.wdl" as versioning
 
 workflow theiacauris_pe {
