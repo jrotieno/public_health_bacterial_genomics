@@ -8,7 +8,7 @@ import "../tasks/quality_control/task_screen.wdl" as screen
 import "../tasks/taxon_id/task_gambit.wdl" as gambit
 import "../tasks/species_typing/task_ts_mlst.wdl" as ts_mlst
 import "../tasks/task_versioning.wdl" as versioning
-
+#Add kraken instead of gambit for tax id
 workflow theiaeuk_illumina_pe {
   meta {
     description: "De-novo genome assembly, taxonomic ID, and QC of paired-end eukaryotic NGS data"
@@ -19,6 +19,7 @@ workflow theiaeuk_illumina_pe {
     File read1_raw
     File read2_raw
     Int min_reads = 7472
+    #Edit default values
     Int min_basepairs = 2241820
     Int min_genome_size = 100000
     Int max_genome_size = 18040666
