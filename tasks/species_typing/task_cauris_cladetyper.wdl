@@ -36,19 +36,19 @@ task cauris_cladetyper {
     fi
     if [ $CLADETYPE="II" ]
     then
-    echo Clade1 | tee CLADETYPE
+    echo Clade2 | tee CLADETYPE
     fi
     if [ $CLADETYPE="III" ]
     then
-    echo Clade1 | tee CLADETYPE
+    echo Clade3 | tee CLADETYPE
     fi
     if [ $CLADETYPE="IV" ]
     then
-    echo Clade1 | tee CLADETYPE
+    echo Clade4 | tee CLADETYPE
     fi
     if [ $CLADETYPE="V" ]
     then
-    echo Clade1 | tee CLADETYPE
+    echo Clade5 | tee CLADETYPE
     fi
     
   >>>
