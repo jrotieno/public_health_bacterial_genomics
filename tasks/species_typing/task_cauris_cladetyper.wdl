@@ -28,8 +28,13 @@ task cauris_cladetyper {
     gambit signatures create -o my-signatures.h5 -k 11 -p ATGAC ~{ref_clade1} ~{ref_clade2} ~{ref_clade3} ~{ref_clade4} ~{ref_clade5} ~{assembly_fasta}
     gambit dist --qs my-signatures.h5 --square -o ~{samplename}_matrix.csv
     
-    cat ~{samplename}_matrix.csv | sort -k7 -t ',' | head -3 | tail -1 | rev | cut -d '/' -f1 | rev |  cut -d ',' -f1 | tee CLADETYPE
-      
+    cat ~{samplename}_matrix.csv | sort -k7 -t ',' | head -3 | tail -1 | rev | cut -d '/' -f1 | rev | cut -d ',' -f1 | cut -d '_' -f3 | tee CLADETYPE
+    
+    if [ $CLADETYPE=I ]
+    then
+    echo Clade1 | tee CLADETYPE
+    fi
+
   >>>
   output {
     String gambit_cladetype = read_string("CLADETYPE")
