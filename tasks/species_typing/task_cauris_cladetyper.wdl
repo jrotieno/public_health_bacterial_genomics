@@ -30,11 +30,27 @@ task cauris_cladetyper {
     
     cat ~{samplename}_matrix.csv | sort -k7 -t ',' | head -3 | tail -1 | rev | cut -d '/' -f1 | rev | cut -d ',' -f1 | cut -d '_' -f3 | tee CLADETYPE
     
-    if [ $CLADETYPE=I ]
+    if [ $CLADETYPE="I" ]
     then
     echo Clade1 | tee CLADETYPE
     fi
-
+    if [ $CLADETYPE="II" ]
+    then
+    echo Clade1 | tee CLADETYPE
+    fi
+    if [ $CLADETYPE="III" ]
+    then
+    echo Clade1 | tee CLADETYPE
+    fi
+    if [ $CLADETYPE="IV" ]
+    then
+    echo Clade1 | tee CLADETYPE
+    fi
+    if [ $CLADETYPE="V" ]
+    then
+    echo Clade1 | tee CLADETYPE
+    fi
+    
   >>>
   output {
     String gambit_cladetype = read_string("CLADETYPE")
