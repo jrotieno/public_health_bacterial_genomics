@@ -9,15 +9,15 @@ task cauris_cladetyper {
     Int memory = 16
     Int cpu = 8
     Int disk_size = 100
-    File ref_clade1 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_I_reference.fasta"
+    File ref_clade1 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade1_reference.fasta"
     String ref_clade1_name = "ref_clade1"
-    File ref_clade2 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_II_reference.fasta"
+    File ref_clade2 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade2_reference.fasta"
     String ref_clade2_name = "ref_clade2"
-    File ref_clade3 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_III_reference.fasta"
+    File ref_clade3 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade3_reference.fasta"
     String ref_clade3_name = "ref_clade3"
-    File ref_clade4 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_IV_reference.fasta"
+    File ref_clade4 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade4_reference.fasta"
     String ref_clade4_name = "ref_clade4"
-    File ref_clade5 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade_V_reference.fasta"
+    File ref_clade5 = "gs://theiagen-public-files/terra/candida_auris_refs/Cauris_Clade5_reference.fasta"
     String ref_clade5_name = "ref_clade5"
   }
   command <<<
@@ -28,7 +28,7 @@ task cauris_cladetyper {
     gambit signatures create -o my-signatures.h5 -k 11 -p ATGAC ~{ref_clade1} ~{ref_clade2} ~{ref_clade3} ~{ref_clade4} ~{ref_clade5} ~{assembly_fasta}
     gambit dist --qs my-signatures.h5 --square -o ~{samplename}_matrix.csv
     
-    cat ~{samplename}_matrix.csv | sort -k7 -t ',' | head -3 | tail -1 | rev | cut -d '/' -f1 | rev | cut -d ',' -f1 | cut -d '_' -f3 | tee CLADETYPE
+    cat ~{samplename}_matrix.csv | sort -k7 -t ',' | head -3 | tail -1 | rev | cut -d '/' -f1 | rev | cut -d ',' -f1 | cut -d '_' -f2 | tee CLADETYPE
     
     # if [ $CLADETYPE="I" ] \
     # then \
