@@ -65,3 +65,8 @@ workflows:
    primaryDescriptorPath: /workflows/wf_rasusa.wdl
    testParameterFiles:
     - empty.json
+ - name: Snippy_PE
+   subclass: WDL
+   primaryDescriptorPath: /workflows/wf_snippy_pe.wdl
+   testParameterFiles:
+    - empty.json
