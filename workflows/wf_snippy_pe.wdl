@@ -7,7 +7,6 @@ workflow snippy_pe_wf {
   meta {
     description: "Perform SNP analysis using snippy"
   }
-
   input {
     File reference
     File read1
