@@ -55,7 +55,7 @@ task snippy_pe {
   }
   runtime {
       docker: "~{docker}"
-      memory: "~{memory}"
+      memory: "~{memory} GB"
       cpu: "~{cpus}"
       disks: "local-disk 100 SSD"
       preemptible: 0
