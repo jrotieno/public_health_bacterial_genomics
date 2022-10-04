@@ -9,7 +9,6 @@ task snippy_pe {
     String docker = "staphb/snippy:4.6.0"
     Int cpus = 4
     Int memory = 8
-    String? subsample_ratio
     Int map_quality = 60
     Int base_quality = 13
     Int min_coverage = 10
@@ -33,43 +32,27 @@ task snippy_pe {
     --minfrac ~{min_fraction} \ #Minumum proportion for variant evidence (0=AUTO) (default '0')
     --minqual ~{min_quality} \ #Minumum QUALITY in VCF column 6 (default '100')
     --maxsoft ~{max_soft_clip} #Maximum soft clipping to allow (default '10')
-
-
   >>>
   output {
-	  File assembly_fasta = "out/~{samplename}_contigs.fasta"
-	  File contigs_gfa = "out/~{samplename}_contigs.gfa"
-    String shovill_version = read_string("VERSION")
-  }
-  runtime {
-      docker: "~{docker}"
-      memory: "16 GB"
-      cpu: 4
-      disks: "local-disk 100 SSD"
-      preemptible: 0
-  }
-}
-
-task shovill_se {
-  input {
-    File read1_cleaned
-    String samplename
-    String docker = "quay.io/staphb/shovill-se:1.1.0"
-    Int min_contig_length = 200
-  }
-  command <<<
-    shovill-se --version | head -1 | tee VERSION
-    shovill-se \
-    --outdir out \
-    --se ~{read1_cleaned} 
-    --minlen ~{min_contig_length}
-    mv out/contigs.fa out/~{samplename}_contigs.fasta
-    mv out/contigs.gfa out/~{samplename}_contigs.gfa
-  >>>
-  output {
-	  File assembly_fasta = "out/~{samplename}_contigs.fasta"
-	  File contigs_gfa = "out/~{samplename}_contigs.gfa"
-    String shovill_version = read_string("VERSION")
+    String snippy_version = read_string("VERSION")
+    File snippy_aligned_fasta = "~{samplename}/~{samplename}.aligned.fa"
+    File snippy_bam = "~{samplename}/~{samplename}.bam"
+    File snippy_bai = "~{samplename}/~{samplename}.bam.bai"
+    File snippy = "~{samplename}/~{samplename}.bed"
+    File snippy_consensus_fasta = "~{samplename}/~{samplename}.consensus.fa"
+    File snippy_subs_fasta = "~{samplename}/~{samplename}.consensus.subs.fa"
+    File snippy_csv = "~{samplename}/~{samplename}.csv"
+    File snippy_filtered_vcf = "~{samplename}/~{samplename}.filt.vcf"
+    File snippy_gff = "~{samplename}/~{samplename}.gff"
+    File snippy_html_report = "~{samplename}/~{samplename}.html"
+    File snippy_log = "~{samplename}/~{samplename}.log"
+    File snippy_raw_vcf = "~{samplename}/~{samplename}.raw.vcf"
+    File snippy_subs_vcf = "~{samplename}/~{samplename}.subs.vcf"
+    File snippy_tsv = "~{samplename}/~{samplename}.tab"
+    File snippy_txt = "~{samplename}/~{samplename}.txt"
+    File snippy_vcf = "~{samplename}/~{samplename}.vcf"
+    File snippy_vcf_gz = "~{samplename}/~{samplename}.vcf.gz"
+    File snippy_vcf_gz_csi = "~{samplename}/~{samplename}.vcf.gz.csi"
   }
   runtime {
       docker: "~{docker}"
