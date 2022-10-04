@@ -19,18 +19,18 @@ task snippy_pe {
   command <<<
     snippy --version | head -1 | tee VERSION
     snippy \
-    --reference ~{reference} \ #Supports FASTA, GenBank, EMBL (not GFF)
+    --reference ~{reference} \
     --R1 ~{read1} \
     --R2 ~{read2} \
     --cpus ~{cpus} \
     --ram ~{memory} \
     --prefix ~{samplename} \
-    --mapqual ~{map_quality} \ #Minimum read mapping quality to consider (default '60')
-    --basequal ~{base_quality} \ #Minimum base quality to consider (default '13')
-    --mincov ~{min_coverage} \ #Minimum site depth to for calling alleles (default '10')
-    --minfrac ~{min_fraction} \ #Minumum proportion for variant evidence (0=AUTO) (default '0')
-    --minqual ~{min_quality} \ #Minumum QUALITY in VCF column 6 (default '100')
-    --maxsoft ~{max_soft_clip} #Maximum soft clipping to allow (default '10')
+    --mapqual ~{map_quality} \
+    --basequal ~{base_quality} \
+    --mincov ~{min_coverage} \
+    --minfrac ~{min_fraction} \
+    --minqual ~{min_quality} \
+    --maxsoft ~{max_soft_clip}
   >>>
   output {
     String snippy_version = read_string("VERSION")
