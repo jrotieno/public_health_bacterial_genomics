@@ -37,7 +37,7 @@ task snippy_pe {
     File snippy_aligned_fasta = "~{samplename}/~{samplename}.aligned.fa"
     File snippy_bam = "~{samplename}/~{samplename}.bam"
     File snippy_bai = "~{samplename}/~{samplename}.bam.bai"
-    File snippy = "~{samplename}/~{samplename}.bed"
+    File snippy_bed = "~{samplename}/~{samplename}.bed"
     File snippy_consensus_fasta = "~{samplename}/~{samplename}.consensus.fa"
     File snippy_subs_fasta = "~{samplename}/~{samplename}.consensus.subs.fa"
     File snippy_csv = "~{samplename}/~{samplename}.csv"
