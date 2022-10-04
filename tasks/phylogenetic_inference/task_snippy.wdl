@@ -20,6 +20,7 @@ task snippy_pe {
     snippy --version | head -1 | tee VERSION
     snippy \
     --reference ~{reference} \
+    --outdir ./ \
     --R1 ~{read1} \
     --R2 ~{read2} \
     --cpus ~{cpus} \
