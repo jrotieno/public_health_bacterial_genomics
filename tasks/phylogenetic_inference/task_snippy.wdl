@@ -3,8 +3,8 @@ version 1.0
 task snippy_pe {
   input {
     File reference
-    File read1_cleaned
-    File read2_cleaned
+    File read1
+    File read2
     String samplename
     String docker = "staphb/snippy:4.6.0"
     Int cpus = 4
@@ -15,14 +15,13 @@ task snippy_pe {
     Float min_fraction = 0
     Int min_quality = 100
     Int max_soft_clip = 10
-
   }
   command <<<
     snippy --version | head -1 | tee VERSION
     snippy \
     --reference ~{reference} \ #Supports FASTA, GenBank, EMBL (not GFF)
-    --R1 ~{read1_cleaned} \
-    --R2 ~{read2_cleaned} \
+    --R1 ~{read1} \
+    --R2 ~{read2} \
     --cpus ~{cpus} \
     --ram ~{memory} \
     --prefix ~{samplename} \
