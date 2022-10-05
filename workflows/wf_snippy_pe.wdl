@@ -10,7 +10,7 @@ workflow snippy_pe_wf {
   input {
     File reference
     File read1
-    File read2
+    File? read2
     String samplename
   }
   call snippy.snippy_pe {
