@@ -22,8 +22,7 @@ task snippy_pe {
       snippy \
       --reference ~{reference} \
       --outdir ~{samplename} \
-      --R1 ~{read1} \
-      --R2 ~{read2} \
+      --se ~{read1} \
       --cpus ~{cpus} \
       --ram ~{memory} \
       --prefix ~{samplename} \
@@ -37,7 +36,8 @@ task snippy_pe {
       snippy \
       --reference ~{reference} \
       --outdir ~{samplename} \
-      --se ~{read1} \
+      --R1 ~{read1} \
+      --R2 ~{read2} \
       --cpus ~{cpus} \
       --ram ~{memory} \
       --prefix ~{samplename} \
