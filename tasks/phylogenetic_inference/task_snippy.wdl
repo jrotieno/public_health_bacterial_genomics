@@ -4,7 +4,7 @@ task snippy_pe {
   input {
     File reference
     File read1
-    File read2
+    File? read2
     String samplename
     String docker = "staphb/snippy:4.6.0"
     Int cpus = 4
@@ -17,6 +17,7 @@ task snippy_pe {
     Int max_soft_clip = 10
   }
   command <<<
+    if [ -z "~{read2}" ]; then
     snippy --version | head -1 | tee VERSION
     snippy \
     --reference ~{reference} \
@@ -32,6 +33,22 @@ task snippy_pe {
     --minfrac ~{min_fraction} \
     --minqual ~{min_quality} \
     --maxsoft ~{max_soft_clip}
+    else
+    snippy --version | head -1 | tee VERSION
+    snippy \
+    --reference ~{reference} \
+    --outdir ~{samplename} \
+    --se ~{read1} \
+    --cpus ~{cpus} \
+    --ram ~{memory} \
+    --prefix ~{samplename} \
+    --mapqual ~{map_quality} \
+    --basequal ~{base_quality} \
+    --mincov ~{min_coverage} \
+    --minfrac ~{min_fraction} \
+    --minqual ~{min_quality} \
+    --maxsoft ~{max_soft_clip}
+    fi
   >>>
   output {
     String snippy_version = read_string("VERSION")
