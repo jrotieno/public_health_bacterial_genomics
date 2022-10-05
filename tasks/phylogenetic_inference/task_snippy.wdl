@@ -17,37 +17,36 @@ task snippy_pe {
     Int max_soft_clip = 10
   }
   command <<<
+    snippy --version | head -1 | tee VERSION
     if [ -z "~{read2}" ]; then
-    snippy --version | head -1 | tee VERSION
-    snippy \
-    --reference ~{reference} \
-    --outdir ~{samplename} \
-    --R1 ~{read1} \
-    --R2 ~{read2} \
-    --cpus ~{cpus} \
-    --ram ~{memory} \
-    --prefix ~{samplename} \
-    --mapqual ~{map_quality} \
-    --basequal ~{base_quality} \
-    --mincov ~{min_coverage} \
-    --minfrac ~{min_fraction} \
-    --minqual ~{min_quality} \
-    --maxsoft ~{max_soft_clip}
+      snippy \
+      --reference ~{reference} \
+      --outdir ~{samplename} \
+      --R1 ~{read1} \
+      --R2 ~{read2} \
+      --cpus ~{cpus} \
+      --ram ~{memory} \
+      --prefix ~{samplename} \
+      --mapqual ~{map_quality} \
+      --basequal ~{base_quality} \
+      --mincov ~{min_coverage} \
+      --minfrac ~{min_fraction} \
+      --minqual ~{min_quality} \
+      --maxsoft ~{max_soft_clip}
     else
-    snippy --version | head -1 | tee VERSION
-    snippy \
-    --reference ~{reference} \
-    --outdir ~{samplename} \
-    --se ~{read1} \
-    --cpus ~{cpus} \
-    --ram ~{memory} \
-    --prefix ~{samplename} \
-    --mapqual ~{map_quality} \
-    --basequal ~{base_quality} \
-    --mincov ~{min_coverage} \
-    --minfrac ~{min_fraction} \
-    --minqual ~{min_quality} \
-    --maxsoft ~{max_soft_clip}
+      snippy \
+      --reference ~{reference} \
+      --outdir ~{samplename} \
+      --se ~{read1} \
+      --cpus ~{cpus} \
+      --ram ~{memory} \
+      --prefix ~{samplename} \
+      --mapqual ~{map_quality} \
+      --basequal ~{base_quality} \
+      --mincov ~{min_coverage} \
+      --minfrac ~{min_fraction} \
+      --minqual ~{min_quality} \
+      --maxsoft ~{max_soft_clip}
     fi
   >>>
   output {
