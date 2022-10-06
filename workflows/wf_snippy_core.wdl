@@ -6,7 +6,7 @@ import "../tasks/task_versioning.wdl" as versioning
 workflow snippy_core_wf {
   input {
     Array[File] read1
-    Array[File] read2
+    Array[File]? read2
     Array[String] samplename
     File reference
     }
