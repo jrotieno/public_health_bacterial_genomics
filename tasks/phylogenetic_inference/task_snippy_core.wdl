@@ -55,7 +55,7 @@ task snippy_core {
 		mv samplename snippy_out
 	done
 	# zip snippy outs
-	zip snippy_out >snippy_out.zip
+	zip -r snippy_out.zip snippy_out
 
   >>>
   output {
