@@ -3,9 +3,8 @@ version 1.0
 task snippy_core {
   input {
     Array[File] read1
-		Array[File] read2
+		Array[File]? read2
     Array[String] samplename
-    String cluster_name
     String docker_image = "quay.io/staphb/ksnp3:3.1"
     Int memory = 8
     Int cpu = 4
