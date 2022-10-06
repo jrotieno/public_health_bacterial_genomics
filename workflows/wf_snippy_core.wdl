@@ -24,7 +24,7 @@ workflow snippy_core_wf {
     # Version Capture
     String snippy_core_wf_version = version_capture.phbg_version
     String snippy_core_wf_analysis_date = version_capture.date
-    # snippy_core_outputs
+    # Snippy_Core outputs
     File snippy_core_alignment = snippy_core_task.snippy_core_alignment
     File snippy_core_full_alignment = snippy_core_task.snippy_core_full_alignment
     File snippy_core_ref = snippy_core_task.snippy_core_ref
