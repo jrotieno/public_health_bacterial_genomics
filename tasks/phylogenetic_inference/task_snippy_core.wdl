@@ -5,7 +5,7 @@ task snippy_core {
 		Array[File] read1
 		Array[File]? read2
 		Array[String] samplename
-		String docker_image = "quay.io/staphb/ksnp3:3.1"
+		String docker_image = "staphb/snippy:4.6.0"
 		Int memory = 8
 		Int cpu = 4
 		Int disk_size = 100
