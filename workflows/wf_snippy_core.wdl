@@ -8,12 +8,14 @@ workflow snippy_core_wf {
     Array[File] read1
     Array[File] read2
     Array[String] samplename
+    File reference
     }
     call snippy_core.snippy_core as snippy_core_task {
         input:
             read1 = read1,
             read2 = read2,
-            samplename = samplename
+            samplename = samplename,
+            reference = reference
   }
   call versioning.version_capture{
     input:
