@@ -9,6 +9,7 @@ task snippy_core {
     Int memory = 8
     Int cpu = 4
     Int disk_size = 100
+		File reference
   }
   command <<<
   read1s_array=(~{sep=' ' read1})
@@ -42,7 +43,7 @@ task snippy_core {
 	fi
 
   # prep snippy-multi script
-  snippy-multi isolates.tab
+  snippy-multi isolates.tab --ref ~{reference}
 	# print snippy-multi script to stdout
 	cat runme.sh
 	# run snippy-multi script
