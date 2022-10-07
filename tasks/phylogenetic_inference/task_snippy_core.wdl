@@ -18,7 +18,7 @@ task snippy_core {
 	read2s_array_len=$(echo "${#read2s_array[@]}")
 	samplename_array=(~{sep=' ' samplename})
 	samplename_array_len=$(echo "${#samplename_array[@]}")
-	
+
 	# Ensure reads, and samplename arrays are of equal length
 	if [ "$read1s_array_len" -ne "$samplename_array_len" ]; then
 		echo "Reads array (length: $read1s_array_len) and samplename array (length: $samplename_array_len) are of unequal length." >&2
@@ -41,6 +41,8 @@ task snippy_core {
 			echo -e "${samplename}\t${read1}\t${read2}" >> isolates.tab
 		done
 	fi
+
+	cat isolates.tab
 
 	# prep snippy-multi script
 	snippy-multi isolates.tab --ref ~{reference}
