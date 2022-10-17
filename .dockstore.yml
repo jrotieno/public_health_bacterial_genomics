@@ -80,3 +80,8 @@ workflows:
    primaryDescriptorPath: /workflows/wf_snippy_core.wdl
    testParameterFiles:
     - empty.json
+ - name: Snippy_Multi
+   subclass: WDL
+   primaryDescriptorPath: /workflows/wf_snippy_core.wdl
+   testParameterFiles:
+    - empty.json
