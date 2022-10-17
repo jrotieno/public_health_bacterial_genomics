@@ -58,7 +58,7 @@ task snippy_core {
 		mv ${samplename} snippy_out/
 	done
 	# zip snippy outs
-	zip -r snippy_out.zip snippy_out
+	# zip -r snippy_out.zip snippy_out
 
 	>>>
 	output {
@@ -68,7 +68,7 @@ task snippy_core {
 		File snippy_core_tab = "core.tab"
 		File snippy_core_txt = "core.txt"
 		File snippy_core_vcf = "core.vcf"
-		File snippy_out = "snippy_out.zip"
+		# File snippy_out = "snippy_out.zip"
 		String snippy_core_docker_image = docker_image
 	}
 	runtime {

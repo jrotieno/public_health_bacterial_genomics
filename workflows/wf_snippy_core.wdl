@@ -31,7 +31,7 @@ workflow snippy_core_wf {
 		File snippy_core_tab = snippy_core_task.snippy_core_tab
 		File snippy_core_txt = snippy_core_task.snippy_core_txt
 		File snippy_core_vcf = snippy_core_task.snippy_core_vcf
-		File snippy_out = snippy_core_task.snippy_out
+		# File snippy_out = snippy_core_task.snippy_out
 		String snippy_core_docker_image = snippy_core_task.snippy_core_docker_image
 	}
 }
