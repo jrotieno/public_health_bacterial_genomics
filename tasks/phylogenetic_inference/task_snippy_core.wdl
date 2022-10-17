@@ -27,7 +27,7 @@ task snippy_core {
 
 	# create file of filenames for snippy input
 	touch isolates.tab
-	if [[ -z "${read2}" ]]; then
+	if [[ -z "${read2s_array}" ]]; then
 		for index in ${!read1s_array[@]}; do
 			read1=${read1s_array[$index]}
 			samplename=${samplename_array[$index]}
