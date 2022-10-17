@@ -25,7 +25,7 @@ task snippy_core {
 		exit 1
 	fi
 
-	# create file of filenames for kSNP3 input
+	# create file of filenames for snippy input
 	touch isolates.tab
 	if [[ -z "${read2}" ]]; then
 		for index in ${!read1s_array[@]}; do
