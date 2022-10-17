@@ -43,11 +43,11 @@ task snippy_core {
 	cat isolates.tab
 
 	# prep snippy-multi script
-	snippy-multi isolates.tab --ref ~{reference}
+	snippy-multi isolates.tab --ref ~{reference} > runme.sh
 	# print snippy-multi script to stdout
 	cat runme.sh
 	# run snippy-multi script
-	sh runme.sh
+	sh ./runme.sh
 
 	# collect individual sample snippy outputs
 	mkdir snippy_out
