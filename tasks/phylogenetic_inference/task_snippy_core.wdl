@@ -32,14 +32,12 @@ task snippy_core {
 			read1=${read1s_array[$index]}
 			samplename=${samplename_array[$index]}
 			echo -e "${samplename}\t${read1}" >> isolates.tab
-		done
 	else
 		for index in ${!read2s_array[@]}; do
 			read1=${read1s_array[$index]}
 			read2=${read2s_array[$index]}
 			samplename=${samplename_array[$index]}
 			echo -e "${samplename}\t${read1}\t${read2}" >> isolates.tab
-		done
 	fi
 
 	cat isolates.tab
