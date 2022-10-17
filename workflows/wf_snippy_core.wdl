@@ -22,16 +22,16 @@ workflow snippy_core_wf {
 	}
 	output {
 		# Version Capture
-		String snippy_core_wf_version = version_capture.phbg_version
-		String snippy_core_wf_analysis_date = version_capture.date
-		# Snippy_Core outputs
-		File snippy_core_alignment = snippy_core_task.snippy_core_alignment
-		File snippy_core_full_alignment = snippy_core_task.snippy_core_full_alignment
-		File snippy_core_ref = snippy_core_task.snippy_core_ref
-		File snippy_core_tab = snippy_core_task.snippy_core_tab
-		File snippy_core_txt = snippy_core_task.snippy_core_txt
-		File snippy_core_vcf = snippy_core_task.snippy_core_vcf
+		String snippy_multi_wf_version = version_capture.phbg_version
+		String snippy_multi_wf_analysis_date = version_capture.date
+		# Snippy_Multi outputs
+		File snippy_multi_alignment = snippy_core_task.snippy_core_alignment
+		File snippy_multi_full_alignment = snippy_core_task.snippy_core_full_alignment
+		File snippy_multi_ref = snippy_core_task.snippy_core_ref
+		File snippy_multi_tab = snippy_core_task.snippy_core_tab
+		File snippy_multi_txt = snippy_core_task.snippy_core_txt
+		File snippy_multi_vcf = snippy_core_task.snippy_core_vcf
 		# File snippy_out = snippy_core_task.snippy_out
-		String snippy_core_docker_image = snippy_core_task.snippy_core_docker_image
+		String snippy_multi_docker_image = snippy_core_task.snippy_core_docker_image
 	}
 }
