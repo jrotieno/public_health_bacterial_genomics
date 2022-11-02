@@ -5,6 +5,7 @@ task snippy_pe {
     File reference
     File read1
     File? read2
+    String? query_gene
     String samplename
     String docker = "staphb/snippy:4.6.0"
     Int cpus = 4
@@ -48,6 +49,9 @@ task snippy_pe {
       --minqual ~{min_quality} \
       --maxsoft ~{max_soft_clip}
     fi
+    # parse gene-specific outputs from snpd.vcf
+    grep ~{query_gene} ~{samplename}/snps.tab
+
   >>>
   output {
     String snippy_version = read_string("VERSION")
