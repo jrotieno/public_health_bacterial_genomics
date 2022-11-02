@@ -50,15 +50,15 @@ task snippy_pe {
       --maxsoft ~{max_soft_clip}
     fi
     # parse gene-specific outputs from snpd.vcf
-    head -n 1 ./test_gbfull/snps.tab > gene_query.tsv
-    grep ponA1 ./test_gbfull/snps.tab >> gene_query.tsv
+    head -n 1 ./test_gbfull/snps.tab > ./gene_query.tsv
+    grep ponA1 ./test_gbfull/snps.tab >> ./gene_query.tsv
     grep ~{query_gene} ~{samplename}/snps.tab | tee GENE_QUERY
 
   >>>
   output {
     String snippy_version = read_string("VERSION")
     String snippy_gene_query = read_string("GENE_QUERY")
-    String snippy_gene_query_file = "gene_query.tsv"
+    String snippy_gene_query_file = "./gene_query.tsv"
     File snippy_aligned_fasta = "~{samplename}/~{samplename}.aligned.fa"
     File snippy_bam = "~{samplename}/~{samplename}.bam"
     File snippy_bai = "~{samplename}/~{samplename}.bam.bai"
