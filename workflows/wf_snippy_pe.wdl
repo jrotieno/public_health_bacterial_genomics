@@ -26,6 +26,7 @@ workflow snippy_pe_wf {
   output {
     String snippy_wf_version = version_capture.phbg_version
     String snippy_version = snippy_pe.snippy_version
+    String snippy_gene_query = snippy_pe.snippy_gene_query
     File snippy_aligned_fasta = snippy_pe.snippy_aligned_fasta
     File snippy_bam = snippy_pe.snippy_bam
     File snippy_bai = snippy_pe.snippy_bai
