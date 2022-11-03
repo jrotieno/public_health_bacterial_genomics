@@ -55,7 +55,7 @@ task snippy_core {
 	mkdir snippy_out
 	for index in ${!samplename_array[@]}; do
 		samplename=${samplename_array[$index]}
-		mv ${samplename} snippy_out/
+		mv ${samplename} snippy_out/${samplename}
 	done
 	# zip snippy outs
 	# zip -r snippy_out.zip snippy_out
