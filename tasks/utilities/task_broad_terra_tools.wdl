@@ -177,6 +177,12 @@ task export_taxon_tables {
     String? midas_primary_genus
     String? midas_secondary_genus
     String? midas_secondary_genus_coverage
+    String? pasty_serogroup
+    String? pasty_serogroup_coverage
+    String? pasty_serogroup_fragments
+    File? pasty_blast_hits
+    File? pasty_all_serogroups
+    String? pasty_version
   }
   command <<<
   

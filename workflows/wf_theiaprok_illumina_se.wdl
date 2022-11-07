@@ -12,8 +12,10 @@ import "../tasks/quality_control/task_mummer_ani.wdl" as ani
 import "../tasks/gene_typing/task_amrfinderplus.wdl" as amrfinderplus
 import "../tasks/gene_typing/task_resfinder.wdl" as resfinder
 import "../tasks/species_typing/task_ts_mlst.wdl" as ts_mlst
+#import "../tasks/gene_typing/task_bakta.wdl" as bakta
 import "../tasks/gene_typing/task_prokka.wdl" as prokka
 import "../tasks/gene_typing/task_plasmidfinder.wdl" as plasmidfinder
+import "../tasks/species_typing/task_pasty.wdl" as pasty
 import "../tasks/task_versioning.wdl" as versioning
 import "../tasks/utilities/task_broad_terra_tools.wdl" as terra_tools
 
@@ -44,6 +46,7 @@ workflow theiaprok_illumina_se {
     Int min_coverage = 10
     Boolean call_resfinder = false
     Boolean skip_screen = false 
+    Boolean use_prokka = false 
   }
   call versioning.version_capture{
     input:
@@ -129,11 +132,20 @@ workflow theiaprok_illumina_se {
           assembly = shovill_se.assembly_fasta,
           samplename = samplename
       }
-      call prokka.prokka {
-        input:
-          assembly = shovill_se.assembly_fasta,
-          samplename = samplename
+      if (use_prokka) {
+        call prokka.prokka {
+          input:
+            assembly = shovill_se.assembly_fasta,
+            samplename = samplename
+        }
       }
+      #if (! use_prokka) {
+      #  call bakta.bakta {
+      #    input:
+      #      assembly = shovill_se.assembly_fasta,
+      #      samplename = samplename
+      #  }
+      #}
       call plasmidfinder.plasmidfinder {
         input:
           assembly = shovill_se.assembly_fasta,
@@ -146,6 +158,11 @@ workflow theiaprok_illumina_se {
           samplename = samplename,
           read1 = read_QC_trim.read1_clean,
           paired_end = false
+      }
+      call pasty.pasty {
+        input:
+          assembly = shovill_se.assembly_fasta,
+          samplename = samplename
       }
       if(defined(taxon_tables)) {
         call terra_tools.export_taxon_tables {
@@ -269,11 +286,6 @@ workflow theiaprok_illumina_se {
             kaptive_kl_confidence = merlin_magic.kaptive_k_confidence,
             kaptive_oc_locus = merlin_magic.kaptive_oc_match,
             kaptive_ocl_confidence = merlin_magic.kaptive_oc_confidence,
-            abricate_abaum_plasmid_tsv = merlin_magic.abricate_results,
-            abricate_abaum_plasmid_type_genes = merlin_magic.abricate_genes,
-            abricate_database = merlin_magic.abricate_database,
-            abricate_version = merlin_magic.abricate_version,
-            abricate_docker = merlin_magic.abricate_docker,
             tbprofiler_output_file = merlin_magic.tbprofiler_output_file,
             tbprofiler_output_bam = merlin_magic.tbprofiler_output_bam,
             tbprofiler_output_bai = merlin_magic.tbprofiler_output_bai,
@@ -288,6 +300,11 @@ workflow theiaprok_illumina_se {
             prokka_gff = prokka.prokka_gff,
             prokka_gbk = prokka.prokka_gbk,
             prokka_sqn = prokka.prokka_sqn,
+            #bakta_gbff = bakta.bakta_gbff,
+            #bakta_gff3 = bakta.bakta_gff3,
+            #bakta_tsv = bakta.bakta_tsv,
+            #bakta_summary = bakta.bakta_txt,
+            #bakta_version = bakta.bakta_version,
             plasmidfinder_plasmids = plasmidfinder.plasmidfinder_plasmids,
             plasmidfinder_results = plasmidfinder.plasmidfinder_results,
             plasmidfinder_seqs = plasmidfinder.plasmidfinder_seqs,
@@ -306,7 +323,13 @@ workflow theiaprok_illumina_se {
             midas_report = read_QC_trim.midas_report,
             midas_primary_genus = read_QC_trim.midas_primary_genus,
             midas_secondary_genus = read_QC_trim.midas_secondary_genus,
-            midas_secondary_genus_coverage = read_QC_trim.midas_secondary_genus_coverage
+            midas_secondary_genus_coverage = read_QC_trim.midas_secondary_genus_coverage,
+            pasty_serogroup = pasty.pasty_serogroup,
+            pasty_serogroup_coverage = pasty.pasty_serogroup_coverage,
+            pasty_serogroup_fragments = pasty.pasty_serogroup_fragments,
+            pasty_blast_hits = pasty.pasty_blast_hits,
+            pasty_all_serogroups = pasty.pasty_all_serogroups,
+            pasty_version = pasty.pasty_version
         }
       }
     }
@@ -393,6 +416,12 @@ workflow theiaprok_illumina_se {
     File? prokka_gff = prokka.prokka_gff
     File? prokka_gbk = prokka.prokka_gbk
     File? prokka_sqn = prokka.prokka_sqn
+    # Bakta Results
+    #File? bakta_gbff = bakta.bakta_gbff
+    #File? bakta_gff3 = bakta.bakta_gff3
+    #File? bakta_tsv = bakta.bakta_tsv
+    #File? bakta_summary = bakta.bakta_txt
+    #String? bakta_version = bakta.bakta_version
     # Plasmidfinder Results
     String? plasmidfinder_plasmids = plasmidfinder.plasmidfinder_plasmids
     File? plasmidfinder_results = plasmidfinder.plasmidfinder_results
@@ -452,11 +481,6 @@ workflow theiaprok_illumina_se {
     String? kaptive_kl_confidence = merlin_magic.kaptive_k_confidence
     String? kaptive_oc_locus = merlin_magic.kaptive_oc_match
     String? kaptive_ocl_confidence = merlin_magic.kaptive_oc_confidence
-    File? abricate_abaum_plasmid_tsv = merlin_magic.abricate_results
-    String? abricate_abaum_plasmid_type_genes = merlin_magic.abricate_genes
-    String? abricate_database = merlin_magic.abricate_database
-    String? abricate_version = merlin_magic.abricate_version
-    String? abricate_docker = merlin_magic.abricate_docker
     # Mycobacterium Typing
     File? tbprofiler_output_file = merlin_magic.tbprofiler_output_file
     File? tbprofiler_output_bam = merlin_magic.tbprofiler_output_bam
@@ -480,5 +504,12 @@ workflow theiaprok_illumina_se {
     String? poppunk_GPS_db_version = merlin_magic.poppunk_GPS_db_version
     String? poppunk_version = merlin_magic.poppunk_version
     String? poppunk_docker = merlin_magic.poppunk_docker
+    # Pseudomonas aerginosa Typing
+    String? pasty_serogroup = pasty.pasty_serogroup
+    String? pasty_serogroup_coverage = pasty.pasty_serogroup_coverage
+    String? pasty_serogroup_fragments = pasty.pasty_serogroup_fragments
+    File? pasty_blast_hits = pasty.pasty_blast_hits
+    File? pasty_all_serogroups = pasty.pasty_all_serogroups
+    String? pasty_version = pasty.pasty_version
   }
 }
